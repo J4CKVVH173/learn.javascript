@@ -24,10 +24,14 @@
                 <li><a href="#">Тесты знаний</a></li>
                 <li><a href="#">Стажировка</a></li>
             </ul>
-            <ul class="right-navigate">
+            <ul class="right-navigate" id="right-navigate">
                 <li><a href="#" class="btn-without-filling border-radius">Купить EPUB/PDF</a></li>
                 <li><a href="#"><i class="fas fa-user"></i></a></li>
-                <li><a href="#"><i class="fas fa-search"></i></a></li>
+                <li><a href="#"><i id="search" class="fas fa-search"></i></a></li>
+                <li id="input-saerch">
+                    <input type="text" placeholder="Input your text">
+                    <span class="input-group-addon"><i class="fas fa-search"></i></span>
+                </li>
             </ul>
         </div>
         <div class="downhead">
@@ -39,12 +43,13 @@
                     <li class="skin-grey">Поделиться:</li>
                     <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                     <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                    <li><a><i class="fab fa-google-plus-g"></i></a></li>
+
                 </ul>
             </div>
             <div class="input-wrapper">
                 <input type="text">
-                <a href="#" class="button-fill carrot">Найти</a>
+                <a href="#" class="button-fill xl uppercase carrot">Найти</a>
             </div>
             <div class="futter-text">
                 <h2>Содержание</h2>
@@ -52,5 +57,81 @@
             </div>
         </div>
     </header>
+    <main class="main-wrapper">
+        <a class="button-fill sm more-border-radius uppercase">Часть 1</a>
+        <div class="text-wrapper">
+        <h2>Язык JavaScript</h2>
+        <p>Эта часть позволит вам изучить JavaScript с нуля или упорядочить и дополнить существующие знания.</p>
+        <p>Мы будем использовать браузер в качестве окружения, но основное внимание будет уделяться именно самому языку JavaScript.</p>
+        </div>
+        <div class="list">
+                <div class="list_item">
+                    <div class="title">Введение</div>
+                    <div class="subtitle"></div>
+                </div>
+                <div class="list_item">
+                    <div class="title"></div>
+                    <div class="subtitle"></div>
+                </div>
+                <div class="list_item">
+                    <div class="title"></div>
+                    <div class="subtitle"></div>
+                </div>
+                <div class="list_item">
+                    <div class="title"></div>
+                    <div class="subtitle"></div>
+                </div>
+                <div class="list_item">
+                    <div class="title"></div>
+                    <div class="subtitle"></div>
+                </div>
+                <div class="list_item">
+                    <div class="title"></div>
+                    <div class="subtitle"></div>
+                </div>
+                <div class="list_item">
+                    <div class="title"></div>
+                    <div class="subtitle"></div>
+                </div>
+                <div class="list_item">
+                    <div class="title"></div>
+                    <div class="subtitle"></div>
+                </div>
+                <div class="list_item">
+                    <div class="title"></div>
+                    <div class="subtitle"></div>
+                </div>
+                <div class="list_item">
+                    <div class="title"></div>
+                    <div class="subtitle"></div>
+                </div>
+            </div>    
+    </main>
+    <script>
+        let forHidden = document.getElementById("right-navigate");
+        let searchInput = document.getElementById('input-saerch');
+        document.addEventListener("click", (event) => {
+            if (event.target.id === "search") {
+                // если нажали на лупу, справа сверху, скрываются эементы и отображается поле ввода
+                for (let i = 0; i < forHidden.children.length - 1; i ++) {
+                    forHidden.children[i].style.display = "none";
+                }
+                forHidden.style.right = "10px";
+                searchInput.style.visibility = 'visible';
+                searchInput.firstElementChild.style.width = "250px";
+            };
+            if (event.target.nodeName === "DIV") {
+                // при нажатии на свободную область, скрываем input справа сверху
+                searchInput.firstElementChild.style.width = "10px";
+                searchInput.style.visibility = 'hidden';
+                forHidden.style.right = "-35px";
+                setTimeout(() => {
+                    for (let i = 0; i < forHidden.children.length - 1; i ++) 
+                    forHidden.children[i].style.display = "inline";
+            }, 200)
+                
+            }
+        })
+    </script>
 </body>
 </html>
